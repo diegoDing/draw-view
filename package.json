@@ -1,0 +1,24 @@
+{
+  "name": "draw-view",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "npm i && vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "moveable": "^0.30.0",
+    "nanoid": "^4.0.0",
+    "vue": "^3.2.25",
+    "vue3-moveable": "^0.5.0",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.3",
+    "naive-ui": "^2.30.3",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.9",
+    "vue-tsc": "^0.34.7"
+  }
+}
