@@ -36,15 +36,14 @@ watchEffect(()=>{
   border-radius: 5px;
 }
 .context-menu>div{
-  width: 60px;
-  height: 25px;
+  width: 80px;
   text-align: center;
-  line-height: 25px;
-  padding: 5px;
-  border-radius: 5px;
+  padding: 2px 5px;
   cursor: pointer;
+  font-size: 12px;
 }
 .context-menu>div:hover{
-  background: rgba(0,0,0,0.1);
+  background: #0071f5;
+  color: white;
 }
 </style>

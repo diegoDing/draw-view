@@ -47,4 +47,9 @@ onBeforeUnmount(()=>{
   flex: 2;
   background: #f6f8fa;
 }
+#app{
+  width: 100vw;
+  height: 100vh;
+  background: #f6f8fa;
+}
 </style>
