@@ -5,14 +5,14 @@ import VCanvas from "./components/VCanvas.vue";
 import {onBeforeUnmount, onMounted} from 'vue'
 import useDraggable from "./hooks/useDraggable";
 import VContextMenu from "./components/VContextMenu.vue";
-import {useStore} from "vuex";
+import {useStore} from "./store";
 
 const {mountedDraggableEvents,destroyDraggableEvents}=useDraggable()
 const store=useStore()
 onMounted(()=>{
   mountedDraggableEvents()
   document.addEventListener('click',()=>{
-    store.commit('hideContextMenu')
+    store.commit('contextMenu/hideContextMenu')
   })
 })
 onBeforeUnmount(()=>{
@@ -32,8 +32,8 @@ onBeforeUnmount(()=>{
 
 <style>
 *{
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 .form-component-list{
 
@@ -45,11 +45,6 @@ onBeforeUnmount(()=>{
 }
 .component-attribute{
   flex: 2;
-  background: #f6f8fa;
-}
-#app{
-  width: 100vw;
-  height: 100vh;
   background: #f6f8fa;
 }
 </style>

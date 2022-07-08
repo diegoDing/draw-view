@@ -5,38 +5,14 @@
 </template>
 
 <script lang="ts" setup>
-import {computed, reactive, watchEffect} from "vue";
-import {nanoid} from "nanoid";
-import {useStore} from "vuex";
+import {computed, watchEffect} from "vue";
+import {useStore} from "../store";
 
-const menus=reactive(
-    [
-      {
-        key:nanoid(),
-        text:'删除',
-        handle:()=>{
-          console.log('删除')
-        }
-      },
-      {
-        key:nanoid(),
-        text:'置顶',
-        handle:()=>{
-          console.log('删除')
-        }
-      },
-      {
-        key:nanoid(),
-        text:'置底',
-        handle:()=>{
-          console.log('删除')
-        }
-      }
-    ]
-)
+
 const store=useStore()
+const menus=computed(()=>store.getters["contextMenu/getMenus"])
 const contextMenuStyle=computed(()=>{
-  const{x,y,show}=store.getters.getContextMenu
+  const{x,y,show}=store.getters["contextMenu/getContextMenu"]
   return {
     left:x+'px',
     top:y+'px',

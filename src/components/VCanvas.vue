@@ -3,7 +3,7 @@ import {computed, onMounted} from 'vue'
 import useDraggable, {UseDraggableEventData} from "../hooks/useDraggable";
 import {nanoid} from "nanoid";
 import config from '../config/useComponents';
-import {useStore} from "vuex";
+import {useStore} from "../store";
 import {ComponentData} from "../modal/Component";
 
 const canvasWidth:number=420
@@ -34,7 +34,12 @@ function addComponent(data:UseDraggableEventData){
     store.commit('addComponentsData',componentData)
   }
 }
-const components=computed(()=>store.state.componentsData)
+
+
+const components=computed(()=>{
+  console.log(store,'store')
+  return store.state.componentsData
+})
 function handleMouseDown(e:MouseEvent,item:ComponentData) {
   e.stopPropagation()
 
@@ -87,12 +92,12 @@ function componentStyle(item:ComponentData){
   }
 }
 
-function setContextMenuData(event:any,index:number){
+function setContextMenuData(event:any,index:number,item:ComponentData){
   if (event){
     const x=event.clientX
     const y=event.clientY
     console.log(event,index)
-    store.commit('setContextMenu',{x,y,show:true})
+    store.commit('contextMenu/setContextMenu',{x,y,show:true,data:item,index})
   }
 }
 const canvasComputed=computed(()=>{
@@ -116,7 +121,7 @@ const canvasComputed=computed(()=>{
            :zIndex="index"
            :style="componentStyle(item)"
            v-ContextMenu
-           @contextmenu.prevent="(e)=>setContextMenuData(e,index)"
+           @contextmenu.prevent="(e)=>setContextMenuData(e,index,item)"
       >
         <span>{{index}}</span>
         <component :is="item.componentName" @mousedown.stop="(e)=>handleMouseDown(e,item)">{{ item.label }}</component>
