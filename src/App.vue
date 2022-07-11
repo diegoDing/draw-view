@@ -4,16 +4,14 @@ import FormComponentList from "./components/FormComponentList.vue";
 import VCanvas from "./components/VCanvas.vue";
 import {onBeforeUnmount, onMounted} from 'vue'
 import useDraggable from "./hooks/useDraggable";
-import VContextMenu from "./components/VContextMenu.vue";
-import {useStore} from "./store";
 
 const {mountedDraggableEvents,destroyDraggableEvents}=useDraggable()
-const store=useStore()
+
 onMounted(()=>{
   mountedDraggableEvents()
-  document.addEventListener('click',()=>{
-    store.commit('contextMenu/hideContextMenu')
-  })
+  // VContextMenu({menus:[{text:'测试',key:nanoid(),handle:()=>{
+  //       console.log('测试')
+  // }}],style:{}})
 })
 onBeforeUnmount(()=>{
   destroyDraggableEvents()
@@ -26,7 +24,6 @@ onBeforeUnmount(()=>{
     <form-component-list class="form-component-list"/>
     <v-canvas />
     <div class="component-attribute"></div>
-    <v-context-menu/>
   </div>
 </template>
 

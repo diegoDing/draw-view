@@ -37,7 +37,6 @@ function addComponent(data:UseDraggableEventData){
 
 
 const components=computed(()=>{
-  console.log(store,'store')
   return store.state.componentsData
 })
 function handleMouseDown(e:MouseEvent,item:ComponentData) {
@@ -97,7 +96,7 @@ function setContextMenuData(event:any,index:number,item:ComponentData){
     const x=event.clientX
     const y=event.clientY
     console.log(event,index)
-    store.commit('contextMenu/setContextMenu',{x,y,show:true,data:item,index})
+    console.log()
   }
 }
 const canvasComputed=computed(()=>{
@@ -120,7 +119,6 @@ const canvasComputed=computed(()=>{
            v-for="(item,index) in components"
            :zIndex="index"
            :style="componentStyle(item)"
-           v-ContextMenu
            @contextmenu.prevent="(e)=>setContextMenuData(e,index,item)"
       >
         <span>{{index}}</span>

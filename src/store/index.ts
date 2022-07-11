@@ -1,7 +1,6 @@
 import {InjectionKey} from 'vue'
 import {createStore, Store, useStore as baseUseStore} from "vuex";
 import {ComponentData} from "../modal/Component";
-import contextMenuStore from "./ContextMenu";
 // 定义 injection key
 export const key: InjectionKey<Store<State>> = Symbol()
 interface State{
@@ -23,9 +22,6 @@ export const store=createStore<State>({
         deleteComponentsData(state,index:number){
             state.componentsData=state.componentsData.filter((item,i)=>i!==index)
         }
-    },
-    modules:{
-        contextMenu:contextMenuStore
     }
 })
 export function useStore () {
