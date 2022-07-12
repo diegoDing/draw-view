@@ -1,50 +1,47 @@
 <script setup lang="ts">
+import { onBeforeUnmount, onMounted } from 'vue';
+import FormComponentList from './components/FormComponentList.vue';
+import VCanvas from './components/VCanvas.vue';
+import useDraggable from './hooks/useDraggable';
 
-import FormComponentList from "./components/FormComponentList.vue";
-import VCanvas from "./components/VCanvas.vue";
-import {onBeforeUnmount, onMounted} from 'vue'
-import useDraggable from "./hooks/useDraggable";
+const { mountedDraggableEvents, destroyDraggableEvents } = useDraggable();
 
-const {mountedDraggableEvents,destroyDraggableEvents}=useDraggable()
-
-onMounted(()=>{
-  mountedDraggableEvents()
+onMounted(() => {
+  mountedDraggableEvents();
   // VContextMenu({menus:[{text:'测试',key:nanoid(),handle:()=>{
   //       console.log('测试')
   // }}],style:{}})
-})
-onBeforeUnmount(()=>{
-  destroyDraggableEvents()
-})
-
+});
+onBeforeUnmount(() => {
+  destroyDraggableEvents();
+});
 </script>
 
 <template>
   <div class="container">
-    <form-component-list class="form-component-list"/>
+    <form-component-list class="form-component-list" />
     <v-canvas />
     <div class="component-attribute"></div>
   </div>
 </template>
 
 <style>
-*{
+* {
   margin: 0;
   padding: 0;
 }
-.form-component-list{
-
+.form-component-list {
 }
-.container{
+.container {
   display: flex;
   width: 100%;
   height: 100%;
 }
-.component-attribute{
+.component-attribute {
   flex: 2;
   background: #f6f8fa;
 }
-#app{
+#app {
   width: 100vw;
   height: 100vh;
   background: #f6f8fa;

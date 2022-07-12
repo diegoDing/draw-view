@@ -1,23 +1,23 @@
 <script lang="ts" setup>
-import config from '../config/useComponents';
-import {reactive} from 'vue';
+import config from '../config/useComponents'
+import { reactive } from 'vue'
 
-const componentList = reactive(config);
+const componentList = reactive(config)
 const handleDrop = (e: any) => {
-  console.log(e, 'handleDrop');
-};
+  console.log(e, 'handleDrop')
+}
 const handleDragenter = (e: any) => {
-  console.log(e, 'handleDragenter');
-};
+  console.log(e, 'handleDragenter')
+}
 const handleDragover = (e: any) => {
-  console.log(e, 'handleDragover');
-};
+  console.log(e, 'handleDragover')
+}
 const handleSelectComponent = (item: any) => {
   componentList.forEach((item) => {
-    item.isActive = false;
-  });
-  item.isActive = true;
-};
+    item.isActive = false
+  })
+  item.isActive = true
+}
 </script>
 <template>
   <div class="form-component-list">

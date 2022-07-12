@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { reactive } from 'vue';
 import config from '../config/useComponents';
-import {reactive} from 'vue';
 
 const componentList = reactive(config);
 const handleDrop = (e: any) => {
